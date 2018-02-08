@@ -29,3 +29,4 @@ def get_data():
     except Exception, e:
         db.rollback()
         print str(e)
+    db.close()

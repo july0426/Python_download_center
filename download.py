@@ -1,5 +1,6 @@
 #coding:utf8
 import requests,time,MySQLdb,setting,get_proxy_mysql
+from contextlib import closing
 config = setting.configs
 url_db = config['url_db']
 host = url_db['host']
@@ -14,18 +15,19 @@ def download(url,file_name,id):
     # proxy = get_proxy()
     proxy = 0
     if proxy:
-        r = requests.get(url, stream=True,proxies=proxy)
+        with closing(requests.get(url, stream=True,proxies=proxy)) as r:
+            with open(file_name, "wb") as code:
+                for chunk in r.iter_content(chunk_size=512):
+                    if chunk:
+                        code.write(chunk)
     # 采用流式请求,对内容进行迭代
     else:
-        r = requests.get(url, stream=True)
-    # 分块写入文件
-    with open(file_name, "wb") as code:
-        try:
-            for chunk in r.iter_content(chunk_size=512):
-                if chunk:
-                    code.write(chunk)
-        except Exception as e:
-            print '下载失败:',str(e)
+        # 分块写入文件
+        with closing(requests.get(url, stream=True)) as r:
+            with open(file_name, "wb") as code:
+                for chunk in r.iter_content(chunk_size=512):
+                    if chunk:
+                        code.write(chunk)
     end = time.time()
     used_time = end - start
     print '文件下载完成,用时%s秒' % used_time

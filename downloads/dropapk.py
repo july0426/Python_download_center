@@ -28,6 +28,7 @@ def dropapk(data):
     url = re.search(re_url,text)
     if url:
         url = url.group(1)
+        print url
         file_type = url[-4:]
         id = data[0]
         file_name = local_path + data[2] + file_type

@@ -14,7 +14,7 @@ configs = {
         'password': 'www-data',
         'database': 'awesome'
     },
-    'local_path':'/users/qiyue/myxuni/pngtree/download_python/'
+    'local_path':'/users/qiyue/myxuni/pngtree/Python_download_center/'
 }
 def save_path():
     dir_array = ("q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v","b")

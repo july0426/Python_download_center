@@ -17,11 +17,11 @@ if data:
             module_name = module_name.group(1)
             # 引入相应模块
             import_name = 'import ' + 'downloads.' + module_name
-            print import_name
+            # print import_name
             exec import_name
             # 调用相应函数
             do_def = 'downloads.' + module_name + '.' + module_name + '(data)'
-            print do_def
+            # print do_def
             exec do_def
 else:
     print '没取到数据'
