@@ -1,4 +1,5 @@
 obb安装包下载中心
+<<<<<<< HEAD
 get_data_mysql.py:  连接数据库,取出任务,包括URL等数据
 get_proxy_mysql.py: 链接数据库,取出代理
 setting.py:         设置数据库参数,本地文件存储路径,并随机创建文件夹
@@ -93,3 +94,13 @@ wget -c  -q -O %s --user-agent="%s"  %s' % (file_name,user_agent,url
 -O 指定的输出文件,不指定就默认当前目录下
 $path = "wget -e use_proxy=yes -e 'https_proxy={$proxy}' -c -d -q -O $save_name --user-agent=$user_agent  \"$url\"  &";
 $path = "wget -e use_proxy=yes -e 'http_proxy={$proxy}' -c -d -q -O $save_name --user-agent=$user_agent  \"$url\"  &"; 这个是http 的代理
+=======
+get_data_mysql是连接数据库,取出任务,包括URL等数据
+get_proxy_mysql是链接数据库,取出代理
+setting:设置数据库参数,本地文件存储路径,并随机创建文件夹
+manage:处理中心,根据数据库取出的数据,调用对应的下载模块,运行这个文件就可以.
+downloads:这个文件夹下面是不同网站的下载模块,文件名和里面函数名要跟目标网站的域名一致,
+          例如网站:http://www.directapk.net 文件名和函数名就都是directapk
+          其中simple是针对那些URL就是最终下载路径的,直接调用他就可以完成下载.
+          后续有其他需求,在这里面写新的文件就可以
+>>>>>>> 81174ef2a332689612667f84d56226b4acc88b85
